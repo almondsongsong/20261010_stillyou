@@ -1,89 +1,328 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>헤어졌지만 잠은 자고 싶어</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
-:root{--bg:#211B1E;--card:#30262B;--text:#EDE5DF;--muted:#baa999;--accent:#C18B96;--edge:#76535c;--gutter:clamp(24px,6vw,96px)}:root[data-theme=light]{--bg:#f5efe7;--card:#fffaf4;--text:#30231d;--muted:#756458;--accent:#8d5e3e;--edge:#d7bda7}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-snap-type:y proximity}body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:400}h1,h2,h3{font-family:'Noto Serif KR',serif;font-weight:500;color:var(--accent)}section{min-height:100vh;padding:56px var(--gutter) 40px;scroll-snap-align:start;position:relative} .topnav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;height:42px;padding:0 var(--gutter);background:var(--bg);border-bottom:1px solid color-mix(in srgb,var(--edge) 65%,transparent)}.header-icon{display:grid;place-items:center;width:38px;height:40px;padding:0;border:0;background:none;color:var(--text);font:400 22px 'Noto Sans KR';text-decoration:none;cursor:pointer}.navlinks{display:flex;gap:6px}.x-link{font-weight:700}.mail-link{font-size:24px}.theme-button{font-size:23px}.menu-panel{display:none;position:fixed;top:50px;left:var(--gutter);z-index:30;width:min(360px,calc(100vw - 48px));padding:20px;background:var(--card);border:1px solid var(--edge);box-shadow:0 14px 35px #0006}.menu-panel.open{display:block}.menu-panel a,.menu-panel button{display:block;width:100%;padding:10px 0;border:0;background:none;color:var(--text);font:400 14px 'Noto Sans KR';text-align:left;text-decoration:none;cursor:pointer}.menu-panel a:hover,.menu-panel button:hover{color:var(--accent)}.author-note{display:none;padding:12px 0 8px;color:var(--muted);font:400 13px/1.8 'Noto Sans KR'}.author-note.open{display:block}.eyebrow{color:var(--accent);font:500 12px 'Noto Sans KR';letter-spacing:.16em;border-bottom:1px solid var(--edge);padding-bottom:12px;margin-bottom:28px}.hero{display:flex;align-items:center;min-height:calc(100vh - 42px);padding-top:28px;background:url('assets/hero.jpg') right center/52% auto no-repeat}.hero-copy{max-width:560px}.hero h1{font-size:clamp(42px,6vw,82px);line-height:1.18;margin:0 0 24px}.hero p{font:400 clamp(17px,2vw,25px)/1.8 'Noto Sans KR'}.tag{color:var(--accent)}.story{display:grid;place-items:center;background:var(--card);text-align:center}.story .copy{max-width:780px}.story h2{font-size:clamp(30px,4vw,58px);line-height:1.45}.story img{width:100%;max-height:48vh;object-fit:cover;margin-top:26px}.timeline{color:var(--accent)}.chargrid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:end}.chargrid img{width:100%;height:60vh;object-fit:cover}.chargrid .user{height:39vh}.episodes{background:var(--card)}details{border:1px solid var(--accent);margin:10px 0;padding:0}summary{padding:18px 22px;cursor:pointer;list-style:none;font-weight:400}summary::-webkit-details-marker{display:none}summary::after{content:'＋';float:right;color:var(--accent)}details[open] summary::after{content:'−'}details p{padding:0 22px 18px;color:var(--muted)}.playgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px}.playcard{border-top:1px solid var(--accent);padding:20px 0}.commands{display:flex;flex-wrap:wrap;gap:10px}.cmd{padding:10px 16px;border:1px solid var(--accent);background:none;color:var(--accent);font:400 14px 'Noto Sans KR';cursor:pointer}.platform{min-height:auto;background:var(--card);text-align:center;scroll-snap-align:none;padding-bottom:0}.buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.buttons a{padding:12px 28px;border:1px solid var(--accent);color:var(--text);text-decoration:none}.footer{margin:60px calc(var(--gutter) * -1) 0;padding:28px var(--gutter);background:var(--card);text-align:center;font:400 12px/1.8 'Noto Sans KR'}.footer p{margin:5px}.footer-heading{color:var(--accent);letter-spacing:.16em}.footer-copyright{font-weight:500}.footer-notice,.footer-credit{color:var(--muted)}.modal{display:none;position:fixed;inset:0;z-index:50;align-items:center;justify-content:center;padding:24px;background:#140f12b8}.modal.show{display:flex}.modalbox{width:min(480px,100%);padding:30px;background:var(--card);border:1px solid var(--accent);position:relative}.close{position:absolute;right:12px;top:8px;border:0;background:none;color:var(--accent);font-size:25px;cursor:pointer}@media(max-width:760px){.hero{min-height:calc(100vh - 42px);background-position:center 12%;background-size:100% auto;align-items:end;padding-bottom:40px}.hero-copy{width:100%;padding-top:45vh}.hero h1{font-size:clamp(38px,11vw,60px)}.chargrid,.playgrid{grid-template-columns:1fr}.chargrid img{height:50vh}.chargrid .user{height:34vh}}
-.playcard:first-child{border-top:0}
-.command-guide p{font-weight:400;line-height:1.9;margin:0 0 24px}
-.command-guide strong{color:var(--accent);font-weight:500}
-/* 이미지 원본 비율 유지: 고정 높이와 cover로 인한 잘림 방지 */
-section{scroll-margin-top:42px}
-.story .copy{width:100%;min-width:0}
-.story img,.chargrid img,.chargrid .user{display:block;width:100%;height:auto;max-height:none;object-fit:contain;border-radius:20px;box-shadow:0 12px 32px #0002}
-.story img{margin:28px auto 0;max-width:720px;mask-image:linear-gradient(to bottom,#000 0%,#000 88%,transparent 100%)}
-.chargrid{grid-template-columns:1fr 1fr;align-items:start;gap:clamp(24px,4vw,56px);max-width:1100px;margin:auto}
-.chargrid>div{min-width:0;padding:12px;background:color-mix(in srgb,var(--card) 55%,transparent);border-radius:24px}
-.chargrid img{mask-image:linear-gradient(to bottom,#000 0%,#000 88%,transparent 100%)}
-.chargrid h2,.chargrid p{padding:0 12px}
-.hero{background:none;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
-.hero::after{content:'';display:block;width:100%;aspect-ratio:1;background:url('assets/hero.jpg') center/contain no-repeat;border-radius:24px;mask-image:linear-gradient(to bottom,transparent 0%,#000 8%,#000 88%,transparent 100%)}
-.hero-copy{max-width:100%;padding-top:0}
-@media(max-width:760px){.hero{grid-template-columns:1fr;align-items:center;padding-top:30px;background:none}.hero::after{grid-row:1;max-width:480px;margin:auto}.hero-copy{padding-top:0}.chargrid{grid-template-columns:1fr;max-width:520px}.story,.hero,#characters{min-height:100svh;height:auto}}
-/* 모바일 히어로는 콘텐츠 높이에 맞추고 이미지와 문구 간격을 줄인다. */
-@media(max-width:760px){
-  .hero{min-height:0;height:auto;padding:24px 24px 32px;gap:18px;align-content:start;scroll-snap-align:start}
-  .hero::after{width:100%;max-width:380px;aspect-ratio:4/3;grid-row:1;background-size:contain}
-  .hero-copy{padding:0;max-width:480px;width:100%;margin:0 auto}
-  .hero .eyebrow{margin-bottom:16px;padding-bottom:8px}
-  .hero h1{font-size:clamp(34px,9vw,52px);line-height:1.22;margin:0 0 14px}
-  .hero p{font-size:17px;line-height:1.65;margin:0 0 12px}
-  .hero .tag{font-size:12px;line-height:1.6}
-  .playgrid,.chargrid{min-width:0}
-  .menu-panel{max-height:calc(100svh - 70px);overflow-y:auto}
-}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>헤어졌지만 잠은 자고 싶어</title>
+<style>
+  :root {
+    --bg: #fbf7f4;
+    --card: #ffffff;
+    --text: #2b2420;
+    --sub: #7a6e66;
+    --line: #eadfd8;
+    --accent: #c9788a;
+    --accent-dark: #a55a6c;
+    --accent-soft: #f6e3e8;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Pretendard", -apple-system, "Noto Sans KR", sans-serif;
+    line-height: 1.65;
+    word-break: keep-all;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+  .wrap { max-width: 480px; margin: 0 auto; background: var(--bg); }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-section{min-height:0;height:auto;padding:48px var(--gutter);scroll-snap-align:none}
-.hero{min-height:0;padding:36px var(--gutter);max-width:1440px;margin:auto;gap:32px}
-.hero::after{aspect-ratio:989/1590;max-height:480px;background-size:contain}
-.hero h1{font-size:clamp(36px,4.4vw,64px)}
-.story{min-height:0}
-.story img{max-width:640px;margin-top:24px}
-.chargrid{max-width:900px;gap:28px}
-.chargrid img,.chargrid .user{height:auto;max-height:none}
-.playgrid{max-width:1100px;margin:auto}
-.platform{padding-bottom:0}
-.footer{margin-top:36px}
-@media(max-width:760px){
- section,.story,#characters{min-height:0;padding:32px 24px}
- .hero{min-height:0;padding:24px;gap:16px}
- .hero::after{aspect-ratio:989/1590;width:100%;max-width:240px;max-height:none}
- .hero-copy{padding:0}
- .hero h1{font-size:36px}
- .chargrid{max-width:380px;gap:24px}
- .story img{max-width:100%}
- .playgrid{gap:12px}
- .footer{margin-left:-24px;margin-right:-24px;padding:24px}
-}
-</style></head><body id="top">
-<nav class="topnav"><button class="header-icon" id="menuButton" type="button" aria-label="페이지 메뉴" aria-expanded="false">☰</button><nav class="navlinks" aria-label="연락처 및 화면 설정"><a class="header-icon x-link" href="https://x.com/almondsongsong" target="_blank" rel="noopener" aria-label="아몬드송송 X 계정">𝕏</a><a class="header-icon mail-link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=almondsongsong%40gmail.com" target="_blank" rel="noopener" aria-label="이메일">✉</a><button class="header-icon theme-button" id="themeButton" type="button" aria-label="라이트 모드로 변경" aria-pressed="false">◐</button></nav></nav>
-<nav class="menu-panel" id="menuPanel"><a href="#story">STORY · 세계관</a><a href="#characters">CHARACTERS · 캐릭터 소개</a><a href="#episodes">EPISODES · 에피소드</a><a href="#play">PLAY GUIDE · 추천 플레이 + 명령어</a><a href="#platform">PLATFORM · 플랫폼 연결</a><button id="authorButton" type="button" aria-expanded="false">ABOUT THE CREATOR</button><div class="author-note" id="authorNote">당신이 주인공이 되는 다채로운 서사의 세계,<br>AI채팅 크리에이터 아몬드송송 입니다.</div></nav>
-<section class="hero"><div class="hero-copy"><div class="eyebrow">HERO</div><h1>헤어졌지만<br>잠은 자고 싶어</h1><p>연애는 끝났는데,<br>너와 자는 건 아직 좋다.</p><span class="tag">10년 연애 · 헤어진 연인 · 사내 재회</span></div></section>
-<section class="story" id="story"><div class="copy"><div class="eyebrow">STORY · 세계관</div><h2>십 년을 사랑했고,<br>다섯 달 전에 헤어졌다.</h2><p>이별 5개월 후, 같은 회사에서 다시 만난 전 남자친구.<br>회식 다음 날, 우리는 같은 모텔 침대에서 눈을 떴다.</p><p class="timeline">10년의 연애　→　이별　→　사내 재회</p><img src="assets/story.jpg" alt="회사에서 마주 앉은 두 사람"></div></section>
-<section id="characters"><div class="eyebrow">CHARACTER · 캐릭터 소개</div><div class="chargrid"><div><img src="assets/char(1).jpg" alt="최재원"><h2>최재원</h2><p>31세 · 대영그룹 개발팀<br>회사에서는 존댓말, 단둘이 있으면 익숙한 반말.</p></div><div><img class="user" src="assets/user.jpg" alt="당신"><h2>당신</h2><p>31세 · 대영그룹 디자인팀<br>이름과 성격, 지금 원하는 관계는 자유롭게.</p></div></div></section>
-<section class="episodes" id="episodes"><div class="eyebrow">EPISODE · 에피소드</div><div class="acc"><details open><summary>01　헤어졌는데, 같은 침대</summary><p>회식 다음 날, 익숙한 사람과 낯선 방에서.</p></details><details><summary>02　어젯밤 얘기는 퇴근하고</summary><p>회사에서는 아무 일도 없었던 사람처럼 행동해야 한다.</p></details><details><summary>03　너 그거 아직 안 버렸네</summary><p>남아 있는 흔적이 오래된 감정을 건드린다.</p></details><details><summary>04　소개팅은 왜 신경 쓰는데</summary><p>끝난 관계라고 하기엔 서로의 반응이 지나치게 선명하다.</p></details><details><summary>05　이번에도 그냥 넘어가?</summary><p>미뤄 둔 질문을 더는 피할 수 없게 된다.</p></details></div></section>
-<section id="play">
-  <div class="eyebrow">PLAY GUIDE · 추천 플레이 + 명령어</div>
-  <div class="playgrid">
-    <div>
-      <div class="playcard">
-        <h3>우리 지금 무슨 사이야?</h3>
-        <p>연인처럼 구는 재원에게 관계를 물어보세요.</p>
-      </div>
-      <div class="playcard">
-        <h3>회사에서는 동료로</h3>
-        <p>회의에서는 존댓말, 단둘이 있으면 반말.</p>
-      </div>
-      <div class="playcard">
-        <h3>다시 만난다면, 이번에는</h3>
-        <p>연락과 약속, 미뤄 둔 대화를 다시 이야기해 보세요.</p>
-      </div>
+  /* 상단 바 */
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    height: 52px; padding: 0 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(251, 247, 244, .92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar b { font-size: 15px; }
+  .menu-btn { background: none; border: 0; font-size: 22px; cursor: pointer; color: var(--text); }
+  .menu {
+    display: none; position: absolute; top: 52px; left: 0; right: 0;
+    background: var(--card); border-bottom: 1px solid var(--line); padding: 8px 16px 16px;
+  }
+  .menu.open { display: block; }
+  .menu a { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .menu small { color: var(--sub); margin-left: 6px; }
+
+  /* 히어로 */
+  .hero {
+    position: relative; min-height: 480px; padding: 24px 20px 32px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    background: #3a2c30 url("assets/hero.jpg") center / cover;
+    color: #fff;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(20,12,14,.85), rgba(20,12,14,.1) 70%);
+  }
+  .hero > * { position: relative; }
+  .hero .eyebrow { font-size: 12px; letter-spacing: .08em; opacity: .8; margin-bottom: 8px; }
+  .hero h1 { font-size: 30px; line-height: 1.3; margin-bottom: 12px; }
+  .hero p { font-size: 15px; opacity: .9; margin-bottom: 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .chip {
+    font-size: 12px; padding: 4px 10px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.5);
+  }
+  .btn {
+    display: inline-block; text-align: center;
+    padding: 14px 28px; border-radius: 999px;
+    background: var(--accent); color: #fff; font-weight: 600; font-size: 15px;
+  }
+  .btn:active { background: var(--accent-dark); }
+
+  /* 공통 섹션 */
+  section { padding: 44px 20px 8px; }
+  .label { font-size: 12px; letter-spacing: .1em; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+  h2 { font-size: 22px; line-height: 1.4; margin-bottom: 12px; }
+  .lead { color: var(--sub); font-size: 15px; }
+
+  /* 세계관 */
+  .timeline {
+    display: flex; justify-content: space-between; position: relative;
+    margin: 28px 8px 8px; font-size: 13px; text-align: center;
+  }
+  .timeline::before {
+    content: ""; position: absolute; top: 5px; left: 8%; right: 8%;
+    height: 1px; background: var(--line);
+  }
+  .timeline div { position: relative; flex: 1; }
+  .timeline i {
+    display: block; width: 11px; height: 11px; margin: 0 auto 8px;
+    border-radius: 50%; background: var(--accent);
+  }
+  .story-img { margin-top: 24px; aspect-ratio: 16 / 10; border-radius: var(--radius); overflow: hidden; background: var(--line); }
+
+  /* 캐릭터 */
+  .chars { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .char { background: var(--card); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+  .char.you { border-style: dashed; border-color: var(--accent); }
+  .char .photo { aspect-ratio: 3 / 4; background: var(--line); }
+  .char .info { padding: 12px; }
+  .char h3 { font-size: 17px; margin-bottom: 4px; }
+  .char .meta { font-size: 12px; color: var(--accent-dark); margin-bottom: 6px; }
+  .char p { font-size: 13px; color: var(--sub); line-height: 1.5; }
+
+  /* 에피소드 */
+  .eps {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 16px -20px 0; padding: 0 20px 12px;
+    scrollbar-width: none;
+  }
+  .eps::-webkit-scrollbar { display: none; }
+  .ep {
+    flex: 0 0 62%; scroll-snap-align: start;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 18px 16px;
+  }
+  .ep span { font-size: 12px; color: var(--accent); font-weight: 600; }
+  .ep h3 { font-size: 16px; line-height: 1.4; margin: 6px 0 8px; }
+  .ep p { font-size: 13px; color: var(--sub); line-height: 1.55; }
+
+  /* 추천 플레이 */
+  .plays { margin-top: 16px; display: grid; gap: 8px; }
+  .play {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px 16px;
+  }
+  .play h3 { font-size: 15px; margin-bottom: 2px; }
+  .play p { font-size: 13px; color: var(--sub); }
+
+  /* 명령어 */
+  .cmds { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cmd {
+    text-align: left; font: inherit; cursor: pointer;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; padding: 12px 14px;
+  }
+  .cmd b { display: block; font-size: 15px; color: var(--accent-dark); }
+  .cmd span { font-size: 12px; color: var(--sub); line-height: 1.45; display: block; margin-top: 2px; }
+  .cmd.copied { background: var(--accent-soft); border-color: var(--accent); }
+  .hint { font-size: 12px; color: var(--sub); margin-top: 10px; }
+
+  /* 플랫폼 */
+  .platforms { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .platforms a {
+    text-align: center; padding: 16px 8px; border-radius: 12px;
+    background: var(--accent); color: #fff; font-weight: 600;
+  }
+  .platforms a:active { background: var(--accent-dark); }
+
+  /* 푸터 */
+  footer { margin-top: 56px; padding: 28px 20px 36px; border-top: 1px solid var(--line); text-align: center; font-size: 12px; color: var(--sub); }
+  .sns { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; font-size: 18px; color: var(--text); }
+  footer p { line-height: 1.7; }
+  .credit { margin-top: 10px; }
+
+  /* 하단 고정 버튼 */
+  .sticky {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(251,247,244,.95); backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+  }
+  .sticky .btn { display: block; max-width: 448px; margin: 0 auto; }
+
+  @media (min-width: 520px) {
+    body { background: #efe6e0; }
+    .wrap { box-shadow: 0 0 40px rgba(0,0,0,.06); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 상단 바 -->
+  <header class="topbar">
+    <b>헤어졌지만 잠은 자고 싶어</b>
+    <button class="menu-btn" id="menuBtn" aria-label="메뉴 열기">☰</button>
+    <nav class="menu" id="menu">
+      <a href="#story">STORY<small>세계관</small></a>
+      <a href="#characters">CHARACTERS<small>캐릭터 소개</small></a>
+      <a href="#episodes">EPISODES<small>에피소드</small></a>
+      <a href="#play">PLAY GUIDE<small>추천 플레이 + 명령어</small></a>
+      <a href="#platform">PLATFORM<small>플랫폼 연결</small></a>
+    </nav>
+  </header>
+
+  <!-- 히어로 -->
+  <div class="hero">
+    <div class="eyebrow">AI CHAT STORY</div>
+    <h1>헤어졌지만<br>잠은 자고 싶어</h1>
+    <p>연애는 끝났는데,<br>너와 자는 건 아직 좋다.</p>
+    <div class="chips">
+      <span class="chip">10년 연애</span>
+      <span class="chip">헤어진 연인</span>
+      <span class="chip">사내 재회</span>
     </div>
-    <div class="command-guide">
-      <h2>명령어 안내</h2>
-      <p><strong>!속마음</strong>은 최재원의 현재 감정과 자각을 확인합니다.<br>
-        <strong>!핸드폰</strong>은 최재원의 휴대폰 화면을 독자만 메타적으로 확인합니다.</p>
-      <p><strong>!다음</strong>은 누적된 관계와 사건을 유지한 채 다음 장면으로 진행합니다.<br>
-        <strong>!요약</strong>은 현재까지의 관계와 사건을 간단히 정리합니다.<br>
-        <strong>!그만</strong>은 현재 분위기나 상황을 멈추고 대화로 돌아갑니다.</p>
-    </div>
+    <a class="btn" href="#platform">대화 시작하기</a>
   </div>
-</section>
-<section class="platform" id="platform"><div><div class="eyebrow">PLATFORM</div><h2>우리 지금 무슨 사이야?</h2><div class="buttons"><a href="#">유니챗</a><a href="#">크랙</a><a href="#">티키타</a><a href="#">케이브덕</a></div></div><footer class="footer"><p class="footer-heading">COPYRIGHT NOTICE</p><p class="footer-copyright">© 2026 아몬드송송 · ALL RIGHTS RESERVED</p><p class="footer-notice">본 작품의 세계관·캐릭터 설정·스토리·창작 요소 및<br>HTML 구조 · 레이아웃 · 디자인의<br>무단 복제, 도용, 변형 및 재배포를 금합니다.</p><p class="footer-credit">Original Story &amp; Creative Design by 🤎⋆ ˚｡⋆୨୧아몬드송송୨୧⋆｡˚ ⋆🤎</p></footer></section>
-<script>const $=id=>document.getElementById(id),menu=$('menuPanel');$('menuButton').onclick=()=>{const open=menu.classList.toggle('open');$('menuButton').setAttribute('aria-expanded',open)};menu.querySelectorAll('a').forEach(a=>a.onclick=()=>menu.classList.remove('open'));$('authorButton').onclick=()=>{const n=$('authorNote'),open=n.classList.toggle('open');$('authorButton').setAttribute('aria-expanded',open)};function theme(){const light=document.documentElement.dataset.theme==='light';$('themeButton').setAttribute('aria-label',light?'다크 모드로 변경':'라이트 모드로 변경');$('themeButton').setAttribute('aria-pressed',light)}$('themeButton').onclick=()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('almond-theme',document.documentElement.dataset.theme)}catch(e){}theme()};try{const s=localStorage.getItem('almond-theme');if(s==='light'||s==='dark')document.documentElement.dataset.theme=s}catch(e){}theme();</script></body></html>
+
+  <!-- 세계관 -->
+  <section id="story">
+    <div class="label">STORY · 세계관</div>
+    <h2>십 년을 사랑했고,<br>다섯 달 전에 헤어졌다.</h2>
+    <p class="lead">
+      이별 5개월 후, 같은 회사에서 다시 만난 전 남자친구.<br>
+      회식 다음 날, 우리는 같은 모텔 침대에서 눈을 떴다.
+    </p>
+    <div class="timeline">
+      <div><i></i>10년 연애</div>
+      <div><i></i>이별</div>
+      <div><i></i>사내 재회</div>
+    </div>
+    <div class="story-img">
+      <img src="assets/story.jpg" alt="회사에서 마주 앉은 두 사람">
+    </div>
+  </section>
+
+  <!-- 캐릭터 -->
+  <section id="characters">
+    <div class="label">CHARACTER · 캐릭터 소개</div>
+    <h2>다시 마주 앉은 두 사람</h2>
+    <div class="chars">
+      <article class="char">
+        <div class="photo"><img src="assets/char(1).jpg" alt="최재원"></div>
+        <div class="info">
+          <h3>최재원</h3>
+          <div class="meta">31세 · 대영그룹 개발팀</div>
+          <p>회사에서는 존댓말, 단둘이 있으면 익숙한 반말.</p>
+        </div>
+      </article>
+      <article class="char you">
+        <div class="photo"><img src="assets/user.jpg" alt="당신"></div>
+        <div class="info">
+          <h3>당신</h3>
+          <div class="meta">31세 · 대영그룹 디자인팀</div>
+          <p>이름과 성격, 지금 원하는 관계는 자유롭게.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 에피소드 -->
+  <section id="episodes">
+    <div class="label">EPISODE · 에피소드</div>
+    <h2>이어지는 다섯 장면</h2>
+    <div class="eps">
+      <div class="ep"><span>EP.01</span><h3>헤어졌는데, 같은 침대</h3><p>회식 다음 날, 익숙한 사람과 낯선 방에서.</p></div>
+      <div class="ep"><span>EP.02</span><h3>어젯밤 얘기는 퇴근하고</h3><p>회사에서는 아무 일도 없었던 사람처럼 행동해야 한다.</p></div>
+      <div class="ep"><span>EP.03</span><h3>너 그거 아직 안 버렸네</h3><p>남아 있는 흔적이 오래된 감정을 건드린다.</p></div>
+      <div class="ep"><span>EP.04</span><h3>소개팅은 왜 신경 쓰는데</h3><p>끝난 관계라고 하기엔 서로의 반응이 지나치게 선명하다.</p></div>
+      <div class="ep"><span>EP.05</span><h3>이번에도 그냥 넘어가?</h3><p>미뤄 둔 질문을 더는 피할 수 없게 된다.</p></div>
+    </div>
+  </section>
+
+  <!-- 추천 플레이 + 명령어 -->
+  <section id="play">
+    <div class="label">PLAY GUIDE · 추천 플레이 + 명령어</div>
+    <h2>이렇게 시작해 보세요</h2>
+    <div class="plays">
+      <div class="play"><h3>우리 지금 무슨 사이야?</h3><p>연인처럼 구는 재원에게 관계를 물어보세요.</p></div>
+      <div class="play"><h3>회사에서는 동료로</h3><p>회의에서는 존댓말, 단둘이 있으면 반말.</p></div>
+      <div class="play"><h3>다시 만난다면, 이번에는</h3><p>연락과 약속, 미뤄 둔 대화를 다시 이야기해 보세요.</p></div>
+    </div>
+
+    <h2 style="margin-top:36px; font-size:18px;">명령어 안내</h2>
+    <div class="cmds">
+      <button class="cmd" data-cmd="!속마음"><b>!속마음</b><span>최재원의 현재 감정과 자각을 확인합니다.</span></button>
+      <button class="cmd" data-cmd="!핸드폰"><b>!핸드폰</b><span>최재원의 휴대폰 화면을 독자만 메타적으로 확인합니다.</span></button>
+      <button class="cmd" data-cmd="!다음"><b>!다음</b><span>누적된 관계와 사건을 유지한 채 다음 장면으로 진행합니다.</span></button>
+      <button class="cmd" data-cmd="!요약"><b>!요약</b><span>현재까지의 관계와 사건을 간단히 정리합니다.</span></button>
+      <button class="cmd" data-cmd="!그만"><b>!그만</b><span>현재 분위기나 상황을 멈추고 대화로 돌아갑니다.</span></button>
+    </div>
+    <p class="hint">명령어를 누르면 복사돼요.</p>
+  </section>
+
+  <!-- 플랫폼 -->
+  <section id="platform">
+    <div class="label">PLATFORM</div>
+    <h2>우리 지금 무슨 사이야?</h2>
+    <div class="platforms">
+      <a href="#">유니챗</a>
+      <a href="#">크랙</a>
+      <a href="#">티키타</a>
+      <a href="#">케이브덕</a>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="sns">
+      <a href="https://x.com/almondsongsong" aria-label="X">𝕏</a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=almondsongsong%40gmail.com" aria-label="메일">✉</a>
+    </div>
+    <p>당신이 주인공이 되는 다채로운 서사의 세계,<br>AI채팅 크리에이터 아몬드송송 입니다.</p>
+    <p class="credit">
+      © 2026 아몬드송송 · ALL RIGHTS RESERVED<br>
+      본 작품의 세계관·캐릭터 설정·스토리·창작 요소 및<br>
+      HTML 구조 · 레이아웃 · 디자인의<br>
+      무단 복제, 도용, 변형 및 재배포를 금합니다.
+    </p>
+    <p class="credit">Original Story &amp; Creative Design by 🤎⋆ ˚｡⋆୨୧아몬드송송୨୧⋆｡˚ ⋆🤎</p>
+  </footer>
+</div>
+
+<!-- 하단 고정 CTA -->
+<div class="sticky"><a class="btn" href="#platform">플랫폼에서 대화 시작</a></div>
+
+<script>
+  const menu = document.getElementById('menu');
+  document.getElementById('menuBtn').addEventListener('click', () => menu.classList.toggle('open'));
+  menu.addEventListener('click', e => { if (e.target.tagName === 'A') menu.classList.remove('open'); });
+
+  document.querySelectorAll('.cmd').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(btn.dataset.cmd); } catch (e) {}
+      btn.classList.add('copied');
+      setTimeout(() => btn.classList.remove('copied'), 900);
+    });
+  });
+</script>
+</body>
+</html>
