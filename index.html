@@ -16,6 +16,18 @@ section{scroll-margin-top:42px}
 .hero::after{content:'';display:block;width:100%;aspect-ratio:1;background:url('assets/hero.png') center/contain no-repeat;border-radius:24px;mask-image:linear-gradient(to bottom,transparent 0%,#000 8%,#000 88%,transparent 100%)}
 .hero-copy{max-width:100%;padding-top:0}
 @media(max-width:760px){.hero{grid-template-columns:1fr;align-items:center;padding-top:30px;background:none}.hero::after{grid-row:1;max-width:480px;margin:auto}.hero-copy{padding-top:0}.chargrid{grid-template-columns:1fr;max-width:520px}.story,.hero,#characters{min-height:100svh;height:auto}}
+/* 모바일 히어로는 콘텐츠 높이에 맞추고 이미지와 문구 간격을 줄인다. */
+@media(max-width:760px){
+  .hero{min-height:0;height:auto;padding:24px 24px 32px;gap:18px;align-content:start;scroll-snap-align:start}
+  .hero::after{width:100%;max-width:380px;aspect-ratio:4/3;grid-row:1;background-size:contain}
+  .hero-copy{padding:0;max-width:480px;width:100%;margin:0 auto}
+  .hero .eyebrow{margin-bottom:16px;padding-bottom:8px}
+  .hero h1{font-size:clamp(34px,9vw,52px);line-height:1.22;margin:0 0 14px}
+  .hero p{font-size:17px;line-height:1.65;margin:0 0 12px}
+  .hero .tag{font-size:12px;line-height:1.6}
+  .playgrid,.chargrid{min-width:0}
+  .menu-panel{max-height:calc(100svh - 70px);overflow-y:auto}
+}
 </style></head><body id="top">
 <nav class="topnav"><button class="header-icon" id="menuButton" type="button" aria-label="페이지 메뉴" aria-expanded="false">☰</button><nav class="navlinks" aria-label="연락처 및 화면 설정"><a class="header-icon x-link" href="https://x.com/almondsongsong" target="_blank" rel="noopener" aria-label="아몬드송송 X 계정">𝕏</a><a class="header-icon mail-link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=almondsongsong%40gmail.com" target="_blank" rel="noopener" aria-label="이메일">✉</a><button class="header-icon theme-button" id="themeButton" type="button" aria-label="라이트 모드로 변경" aria-pressed="false">◐</button></nav></nav>
 <nav class="menu-panel" id="menuPanel"><a href="#story">STORY · 세계관</a><a href="#characters">CHARACTERS · 캐릭터 소개</a><a href="#episodes">EPISODES · 에피소드</a><a href="#play">PLAY GUIDE · 추천 플레이 + 명령어</a><a href="#platform">PLATFORM · 플랫폼 연결</a><button id="authorButton" type="button" aria-expanded="false">ABOUT THE CREATOR</button><div class="author-note" id="authorNote">당신이 주인공이 되는 다채로운 서사의 세계,<br>AI채팅 크리에이터 아몬드송송 입니다.</div></nav>
