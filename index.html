@@ -83,20 +83,44 @@
   .lead { color: var(--sub); font-size: 15px; }
 
   /* 세계관 */
-  .timeline {
-    display: flex; justify-content: space-between; position: relative;
-    margin: 28px 8px 8px; font-size: 13px; text-align: center;
+  .story-img {
+    margin: 16px 0 20px;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--line);
   }
-  .timeline::before {
-    content: ""; position: absolute; top: 5px; left: 8%; right: 8%;
-    height: 1px; background: var(--line);
+  .world-info {
+    margin-top: 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
   }
-  .timeline div { position: relative; flex: 1; }
-  .timeline i {
-    display: block; width: 11px; height: 11px; margin: 0 auto 8px;
-    border-radius: 50%; background: var(--accent);
+  .world-info .row {
+    display: flex;
+    border-bottom: 1px solid var(--line);
   }
-  .story-img { margin-top: 24px; aspect-ratio: 16 / 10; border-radius: var(--radius); overflow: hidden; background: var(--line); }
+  .world-info .row:last-child { border-bottom: none; }
+  .world-info .key {
+    flex: 0 0 72px;
+    padding: 14px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    border-right: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+  }
+  .world-info .value {
+    flex: 1;
+    padding: 14px 14px;
+    font-size: 14px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+  }
 
   /* 캐릭터 */
   .chars { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
@@ -222,17 +246,28 @@
   <section id="story">
     <div class="label">STORY · 세계관</div>
     <h2>십 년을 사랑했고,<br>다섯 달 전에 헤어졌다.</h2>
-    <p class="lead">
-      이별 5개월 후, 같은 회사에서 다시 만난 전 남자친구.<br>
-      회식 다음 날, 우리는 같은 모텔 침대에서 눈을 떴다.
-    </p>
-    <div class="timeline">
-      <div><i></i>10년 연애</div>
-      <div><i></i>이별</div>
-      <div><i></i>사내 재회</div>
-    </div>
+
     <div class="story-img">
       <img src="assets/story.jpg" alt="회사에서 마주 앉은 두 사람">
+    </div>
+
+    <p class="lead">
+      이별 5개월 후, 같은 회사에서 다시 만난 전 남자친구.
+    </p>
+
+    <div class="world-info">
+      <div class="row">
+        <div class="key">배경</div>
+        <div class="value">대영그룹</div>
+      </div>
+      <div class="row">
+        <div class="key">관계</div>
+        <div class="value">헤어진 연인</div>
+      </div>
+      <div class="row">
+        <div class="key">규칙</div>
+        <div class="value">회사 존댓말 / 단둘이 반말</div>
+      </div>
     </div>
   </section>
 
@@ -282,7 +317,6 @@
       <div class="play"><h3>회사에서는 동료로</h3><p>회의에서는 존댓말, 단둘이 있으면 반말.</p></div>
       <div class="play"><h3>다시 만난다면, 이번에는</h3><p>연락과 약속, 미뤄 둔 대화를 다시 이야기해 보세요.</p></div>
     </div>
-
     <h2 style="margin-top:36px; font-size:18px;">명령어 안내</h2>
     <div class="cmds">
       <button class="cmd" data-cmd="!속마음"><b>!속마음</b><span>최재원의 현재 감정과 자각을 확인합니다.</span></button>
@@ -316,9 +350,8 @@
     </p>
     <p class="credit">Original Story &amp; Creative Design by 🤎⋆ ˚｡⋆୨୧아몬드송송୨୧⋆｡˚ ⋆🤎</p>
   </footer>
+
 </div>
-
-
 
 <script>
   const menu = document.getElementById('menu');
@@ -341,7 +374,6 @@
   function moveEpisode(direction) { track.scrollBy({left: direction * (track.querySelector('.ep').getBoundingClientRect().width + 12), behavior:'smooth'}); }
   track.addEventListener('keydown', e => { if(e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); moveEpisode(e.key === 'ArrowLeft' ? -1 : 1); } });
   menu.addEventListener('click', e => { if (e.target.closest('a')) { menu.classList.remove('open'); document.getElementById('menuBtn').setAttribute('aria-expanded', 'false'); } });
-
   document.querySelectorAll('.cmd').forEach(btn => {
     btn.addEventListener('click', async () => {
       try { await navigator.clipboard.writeText(btn.dataset.cmd); } catch (e) {}
