@@ -175,13 +175,8 @@
   :root[data-theme="light"] { --bg:#fbf7f4;--card:#fff;--text:#2b2420;--sub:#7a6e66;--line:#eadfd8;--accent:#a55a6c;--accent-soft:#f6e3e8; }
   .header-actions{display:flex;gap:6px;align-items:center}
   .header-icon{display:grid;place-items:center;width:38px;height:40px;padding:0;border:0;background:none;color:var(--text);font:400 23px/1 sans-serif;cursor:pointer}
-  .author{padding-top:12px}
-  .author summary{cursor:pointer;font-size:15px;list-style:none}
-  .author summary::-webkit-details-marker{display:none}
-  .author summary span{float:right}
-  .author p{margin-top:12px;color:var(--sub);font-size:13px;line-height:1.8}
-  .episode-controls{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
-  .episode-controls button{width:40px;height:36px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);cursor:pointer;font-size:20px}
+  .author{padding:16px 0;border-bottom:1px solid var(--line)}
+  .author p{color:var(--sub);font-size:13px;line-height:1.8;font-weight:400}
   .eps{scrollbar-width:thin;scrollbar-color:var(--accent) var(--card);touch-action:pan-x pan-y;scroll-behavior:smooth}
   .eps::-webkit-scrollbar{display:block;height:5px}
   .eps::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
@@ -201,12 +196,12 @@
       <button class="header-icon" id="themeBtn" type="button" aria-label="라이트 모드로 변경">◐</button>
     </nav>
     <nav class="menu" id="menu">
+      <div class="author"><p>당신이 주인공이 되는 다채로운 서사의 세계,<br>AI채팅 크리에이터 아몬드송송 입니다.</p></div>
       <a href="#story">STORY<small>세계관</small></a>
       <a href="#characters">CHARACTERS<small>캐릭터 소개</small></a>
       <a href="#episodes">EPISODES<small>에피소드</small></a>
       <a href="#play">PLAY GUIDE<small>추천 플레이 + 명령어</small></a>
       <a href="#platform">PLATFORM<small>플랫폼 연결</small></a>
-      <details class="author"><summary>작가 소개 <span>＋</span></summary><p>당신이 주인공이 되는 다채로운 서사의 세계,<br>AI채팅 크리에이터 아몬드송송 입니다.</p></details>
     </nav>
   </header>
 
@@ -268,10 +263,6 @@
   <section id="episodes">
     <div class="label">EPISODE · 에피소드</div>
     <h2>이어지는 다섯 장면</h2>
-    <div class="episode-controls">
-      <button type="button" id="epPrev" aria-label="이전 에피소드">←</button>
-      <button type="button" id="epNext" aria-label="다음 에피소드">→</button>
-    </div>
     <div class="eps" id="episodeTrack" tabindex="0" aria-label="에피소드 좌우 스크롤">
       <div class="ep"><span>EP.01</span><h3>헤어졌는데, 같은 침대</h3><p>회식 다음 날, 익숙한 사람과 낯선 방에서.</p></div>
       <div class="ep"><span>EP.02</span><h3>어젯밤 얘기는 퇴근하고</h3><p>회사에서는 아무 일도 없었던 사람처럼 행동해야 한다.</p></div>
@@ -347,10 +338,8 @@
   syncTheme();
   const track = document.getElementById('episodeTrack');
   function moveEpisode(direction) { track.scrollBy({left: direction * (track.querySelector('.ep').getBoundingClientRect().width + 12), behavior:'smooth'}); }
-  document.getElementById('epPrev').onclick = () => moveEpisode(-1);
-  document.getElementById('epNext').onclick = () => moveEpisode(1);
   track.addEventListener('keydown', e => { if(e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); moveEpisode(e.key === 'ArrowLeft' ? -1 : 1); } });
-  menu.addEventListener('click', e => { if (e.target.tagName === 'A') menu.classList.remove('open'); });
+  menu.addEventListener('click', e => { if (e.target.closest('a')) { menu.classList.remove('open'); document.getElementById('menuBtn').setAttribute('aria-expanded', 'false'); } });
 
   document.querySelectorAll('.cmd').forEach(btn => {
     btn.addEventListener('click', async () => {
